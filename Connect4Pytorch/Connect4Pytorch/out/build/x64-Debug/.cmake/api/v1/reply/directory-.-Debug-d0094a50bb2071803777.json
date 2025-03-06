@@ -8,7 +8,7 @@
 	"installers" : [],
 	"paths" : 
 	{
-		"build" : "Connect4Pytorch",
-		"source" : "Connect4Pytorch"
+		"build" : ".",
+		"source" : "."
 	}
 }

@@ -1,12 +1,16 @@
-﻿// Connect4Pytorch.cpp : Defines the entry point for the application.
-//
+﻿#include <torch/torch.h>
+#include <iostream>
 
-#include "Connect4Pytorch.h"
+int main() {
+    // Print a message to verify that PyTorch is being used
+    std::cout << "PyTorch is working!" << std::endl;
 
-using namespace std;
+    // Create a tensor filled with random values
+    torch::Tensor tensor = torch::randn({ 2, 3 });  // 2x3 matrix with random values
+    std::cout << "Tensor: " << tensor << std::endl;
 
-int main()
-{
-	cout << "Hello CMake." << endl;
-	return 0;
+    // Check tensor's properties
+    std::cout << "Tensor size: " << tensor.sizes() << std::endl;
+
+    return 0;
 }

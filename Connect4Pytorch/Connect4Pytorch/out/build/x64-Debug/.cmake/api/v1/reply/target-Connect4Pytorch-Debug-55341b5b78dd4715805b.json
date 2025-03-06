@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Connect4Pytorch/Connect4Pytorch.exe"
+			"path" : "Connect4Pytorch.exe"
 		},
 		{
-			"path" : "Connect4Pytorch/Connect4Pytorch.pdb"
+			"path" : "Connect4Pytorch.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -18,7 +18,7 @@
 		],
 		"files" : 
 		[
-			"Connect4Pytorch/CMakeLists.txt"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -45,7 +45,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -std:c++20 -ZI"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20"
 				}
 			],
 			"language" : "CXX",
@@ -63,13 +63,13 @@
 			]
 		}
 	],
-	"id" : "Connect4Pytorch::@de775fdf3f00c2be7ae6",
+	"id" : "Connect4Pytorch::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Ob0 /Od /RTC1 -ZI",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
 				"role" : "flags"
 			},
 			{
@@ -87,8 +87,8 @@
 	"nameOnDisk" : "Connect4Pytorch.exe",
 	"paths" : 
 	{
-		"build" : "Connect4Pytorch",
-		"source" : "Connect4Pytorch"
+		"build" : ".",
+		"source" : "."
 	},
 	"sourceGroups" : 
 	[
@@ -112,12 +112,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Connect4Pytorch/Connect4Pytorch.cpp",
+			"path" : "Connect4Pytorch.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Connect4Pytorch/Connect4Pytorch.h",
+			"path" : "Connect4Pytorch.h",
 			"sourceGroupIndex" : 1
 		}
 	],

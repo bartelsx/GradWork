@@ -6,28 +6,13 @@
 			[
 				{
 					"build" : ".",
-					"childIndexes" : 
-					[
-						1
-					],
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.8"
+						"string" : "3.10"
 					},
 					"projectIndex" : 0,
-					"source" : "."
-				},
-				{
-					"build" : "Connect4Pytorch",
-					"jsonFile" : "directory-Connect4Pytorch-Debug-61509b122822d93d0f76.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.8"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 0,
-					"source" : "Connect4Pytorch",
+					"source" : ".",
 					"targetIndexes" : 
 					[
 						0
@@ -40,8 +25,7 @@
 				{
 					"directoryIndexes" : 
 					[
-						0,
-						1
+						0
 					],
 					"name" : "Connect4Pytorch",
 					"targetIndexes" : 
@@ -53,9 +37,9 @@
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 1,
-					"id" : "Connect4Pytorch::@de775fdf3f00c2be7ae6",
-					"jsonFile" : "target-Connect4Pytorch-Debug-09d15848408071191e84.json",
+					"directoryIndex" : 0,
+					"id" : "Connect4Pytorch::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Connect4Pytorch-Debug-e3532ee7a0cf94f1c7d9.json",
 					"name" : "Connect4Pytorch",
 					"projectIndex" : 0
 				}

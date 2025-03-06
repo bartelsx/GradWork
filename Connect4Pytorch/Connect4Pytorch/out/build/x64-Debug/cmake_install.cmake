@@ -1,8 +1,8 @@
-# Install script for directory: C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch
+# Install script for directory: C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/Connect4Pytorch
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/out/install/x64-debug")
+  set(CMAKE_INSTALL_PREFIX "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/Connect4Pytorch/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/out/build/x64-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/Connect4Pytorch/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/3.29.5-msvc4/CMakeSystem.cmake"
+			"path" : "out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -285,7 +285,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/3.29.5-msvc4/CMakeCCompiler.cmake"
+			"path" : "out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -534,7 +534,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/3.29.5-msvc4/CMakeCXXCompiler.cmake"
+			"path" : "out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -608,7 +608,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/3.29.5-msvc4/CMakeRCCompiler.cmake"
+			"path" : "out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -687,7 +687,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/3.29.5-msvc4/CMakeCCompiler.cmake"
+			"path" : "out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -791,17 +791,14 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-debug/CMakeFiles/3.29.5-msvc4/CMakeCXXCompiler.cmake"
-		},
-		{
-			"path" : "Connect4Pytorch/CMakeLists.txt"
+			"path" : "out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CMakeCXXCompiler.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/out/build/x64-debug",
-		"source" : "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch"
+		"build" : "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/Connect4Pytorch/out/build/x64-Debug",
+		"source" : "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/Connect4Pytorch"
 	},
 	"version" : 
 	{
