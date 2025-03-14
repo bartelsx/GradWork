@@ -1,3 +1,0 @@
-C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/out/build/x64-debug/CMakeFiles/Connect4Pytorch.dir
-C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/out/build/x64-debug/CMakeFiles/edit_cache.dir
-C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/out/build/x64-debug/CMakeFiles/rebuild_cache.dir

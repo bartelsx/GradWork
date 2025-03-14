@@ -4,11 +4,22 @@
     <ClCompile Include="C:\2DAE\3th\GradWork\GradWork_Project\GradWork\Connect4Pytorch\Connect4Pytorch\Connect4Pytorch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\2DAE\3th\GradWork\GradWork_Project\GradWork\Connect4Pytorch\Connect4Pytorch\Board.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\2DAE\3th\GradWork\GradWork_Project\GradWork\Connect4Pytorch\Connect4Pytorch\Connect4Algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\2DAE\3th\GradWork\GradWork_Project\GradWork\Connect4Pytorch\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{2B541BCB-AD2D-314D-B92B-3036E75EC2A8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{57797AB6-84F1-3AEA-BC49-15904CFC14A8}</UniqueIdentifier>
     </Filter>
