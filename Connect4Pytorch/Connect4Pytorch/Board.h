@@ -3,6 +3,7 @@
 #include <array>
 #include <stdexcept>
 #include <vector>
+#include <torch/torch.h>
 
 enum class Value
 { None, Red, Yellow  };
@@ -11,6 +12,8 @@ class Board
 {
 
 	std::array<std::vector<Value>, 7> m_values{};
+
+	
 
 	void AssertColumn(int column) const
 	{
@@ -71,6 +74,88 @@ class Board
 public:
 	static constexpr int COLUMNS = 7;
 	static constexpr int MAX_DISCS_PER_COLUMN = 6;
+
+	void Reset()
+	{
+		for (auto& vec : m_values) {
+			vec.clear(); // Clears each individual vector inside the array.
+		}
+	}
+
+	//DQN
+	// Additional functions
+	bool IsGameOver() {
+		return IsFull() || HasFourInARow() != Value::None;
+	}
+
+	double GetReward(Value playerColor) {
+		auto winner = HasFourInARow();
+		if (winner == playerColor) return 1.0;
+		if (winner != Value::None) return -1.0;
+		return 0.0;
+	}
+
+	/*torch::Tensor ToTensor() const {
+		torch::Tensor boardTensor = torch::zeros({ 2, MAX_DISCS_PER_COLUMN, COLUMNS });
+		for (int c = 0; c < COLUMNS; ++c) {
+			for (int r = 0; r < int(m_values[c].size()); ++r) {
+				if (m_values[c][r] == Value::Red)
+					boardTensor[0][r][c] = 1;
+				else if (m_values[c][r] == Value::Yellow)
+					boardTensor[1][r][c] = 1;
+			}
+		}
+		return boardTensor;
+	}*/
+
+
+	torch::Tensor ToTensor() const {
+		// Initialize a tensor of zeros with shape [2, MAX_DISCS_PER_COLUMN, COLUMNS]
+		torch::Tensor boardTensor = torch::zeros({ 2, MAX_DISCS_PER_COLUMN, COLUMNS });
+
+		// Debug: print the shape of the tensor
+		//std::cout << "boardTensor shape: " << boardTensor.sizes() << std::endl;
+
+		for (int c = 0; c < COLUMNS; ++c) {
+			// Ensure c is within bounds
+			if (c >= COLUMNS) {
+				//std::cerr << "Error: Column index out of bounds" << std::endl;
+				break;
+			}
+
+			for (int r = 0; r < int(m_values[c].size()); ++r) {
+				// Ensure r is within bounds
+				if (r >= MAX_DISCS_PER_COLUMN) {
+					//std::cerr << "Error: Row index out of bounds" << std::endl;
+					break;
+				}
+
+				// Debugging the value in m_values[c][r]
+				//std::cout << "m_values[" << c << "][" << r << "] = " << m_values[c][r] << std::endl;
+
+				if (m_values[c][r] == Value::Red) {
+					boardTensor[0][r][c] = 1;
+				}
+				else if (m_values[c][r] == Value::Yellow) {
+					boardTensor[1][r][c] = 1;
+				}
+			}
+		}
+
+		// Debug: print the final tensor values
+		//std::cout << "Final boardTensor: " << boardTensor << std::endl;
+
+		return boardTensor;
+	}
+
+
+
+
+	bool IsValidMove(int column) const {
+		return column >= 0 && column < COLUMNS && m_values[column].size() < MAX_DISCS_PER_COLUMN;
+	}
+///
+
 
 	int GetSize(int column) const
 	{
