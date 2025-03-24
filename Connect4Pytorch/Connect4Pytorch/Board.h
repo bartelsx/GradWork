@@ -90,8 +90,14 @@ public:
 
 	double GetReward(Value playerColor) {
 		auto winner = HasFourInARow();
-		if (winner == playerColor) return 1.0;
-		if (winner != Value::None) return -1.0;
+		if (winner == playerColor)
+		{
+			return 1.0;
+		}
+		if (winner != Value::None)
+		{
+			return -1.0;
+		}
 		return 0.0;
 	}
 
