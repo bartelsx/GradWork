@@ -190,6 +190,7 @@ void PrintBoard(const Board& board) {
 }
 
 int main() {
+	at::set_num_threads(1);
 	Board board;
 	Connect4Algorithm minimaxAI(MACHINE_COLOR, LEVEL);
 	DQNAgent dqnAI;
@@ -204,8 +205,8 @@ int main() {
 		//    std::cerr << "Error opening log file!" << std::endl;
 		return 1;
 	}
-	torch::load(dqnAI.policy_net, "policyReal.model");
-	torch::load(dqnAI.target_net, "policyReal.model");
+	torch::load(dqnAI.policy_net, "policyRealCNN.model");
+	torch::load(dqnAI.target_net, "policyRealCNN.model");
 
 	std::ifstream epsilon_file("epsilon.txt");
 	if (epsilon_file.is_open()) {
@@ -220,7 +221,7 @@ int main() {
 
 
 	//dqnAI.update_target();
-	for (int episode = 0; episode < 1000000; ++episode) { // Training loop
+	for (int episode = 0; episode < 100000; ++episode) { // Training loop
 		//  std::cout << episode<<"\n";
 		board.Reset();
 		bool dqnTurn = (DQN_COLOR == Value::Red);
@@ -287,7 +288,7 @@ int main() {
 
 		if (episode % 200 == 0) 
 		{
-			torch::save(dqnAI.policy_net, "policyReal.model");
+			torch::save(dqnAI.policy_net, "policyRealCNN.model");
 			dqnAI.update_target();  // Update target network every 500 episodes
 			std::ofstream epsilon_file("epsilon.txt");
 			epsilon_file << epsilon;
@@ -297,7 +298,7 @@ int main() {
 
 	logFile.close();
 	std::cout << "Training complete! Saving model..." << std::endl;
-	torch::save(dqnAI.policy_net, "policyReal.model");
+	torch::save(dqnAI.policy_net, "policyRealCNN.model");
 	return 0;
 }
 
