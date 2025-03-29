@@ -6,9 +6,9 @@
 
 // ======================== Hyperparameters ========================
 const int CHANNELS = 2;        // Two layers for pieces (player and opponent)
-const int HEIGHT = 6;          // Connect 4 grid height
-const int WIDTH = 7;           // Connect 4 grid width
-const int ACTION_SIZE = 7;     // 7 possible moves
+const int HEIGHT = 6;          // Connect 4 grid height (unchanged)
+const int WIDTH = 7;           // Connect 4 grid width (unchanged)
+const int ACTION_SIZE = 7;     // 7 possible moves (columns)
 const double GAMMA = 0.95;
 const double LEARNING_RATE = 0.0005;
 const int MEMORY_SIZE = 50000;
@@ -20,20 +20,22 @@ const float TAU = 0.005;  // Soft update parameter
 
 // ======================== CNN-Based DQN ========================
 struct DQNImpl : torch::nn::Module {
-    // Convolutional layers
-    torch::nn::Conv2d conv1{ nullptr }, conv2{ nullptr };
+    // Convolutional layers (only one with 4x4 kernel)
+    torch::nn::Conv2d conv1{ nullptr };
 
     // Fully connected layers
     torch::nn::Linear fc1{ nullptr }, fc2{ nullptr };
 
     DQNImpl() {
-        conv1 = torch::nn::Conv2d(torch::nn::Conv2dOptions(CHANNELS, 32, 3).stride(1).padding(1));
+        // First convolution (4x4 kernel, no padding, stride=1)
+        conv1 = torch::nn::Conv2d(torch::nn::Conv2dOptions(CHANNELS, 64, 4).stride(1).padding(0));
         register_module("conv1", conv1);
 
-        conv2 = torch::nn::Conv2d(torch::nn::Conv2dOptions(32, 64, 3).stride(1).padding(1));
-        register_module("conv2", conv2);
+        // Compute output size after one 4x4 convolution:
+        int conv_output_height = HEIGHT - 3;  // 6 → 3
+        int conv_output_width = WIDTH - 3;    // 7 → 4
 
-        fc1 = torch::nn::Linear(64 * HEIGHT * WIDTH, 128);
+        fc1 = torch::nn::Linear(64 * conv_output_height * conv_output_width, 128);
         register_module("fc1", fc1);
 
         fc2 = torch::nn::Linear(128, ACTION_SIZE);
@@ -42,7 +44,6 @@ struct DQNImpl : torch::nn::Module {
 
     torch::Tensor forward(torch::Tensor x) {
         x = torch::relu(conv1(x));
-        x = torch::relu(conv2(x));
         x = x.view({ x.size(0), -1 });  // Flatten
         x = torch::relu(fc1(x));
         x = fc2(x);
@@ -64,6 +65,7 @@ struct DQNImpl : torch::nn::Module {
 
 // ✅ Register CNN-Based DQN as a Torch Module
 TORCH_MODULE(DQN);
+
 
 // ======================== Experience Replay Buffer ========================
 struct ReplayBuffer {
