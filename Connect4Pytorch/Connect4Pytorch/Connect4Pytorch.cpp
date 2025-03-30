@@ -62,7 +62,8 @@ int main() {
 
 	std::ifstream epsilon_file("epsilon.txt");
 	if (epsilon_file.is_open()) {
-		epsilon_file >> epsilon;
+		//epsilon_file >> epsilon;
+		epsilon = 1;
 		epsilon_file.close();
 	}
 	else {
@@ -79,7 +80,7 @@ int main() {
 		bool dqnTurn = (DQN_COLOR == Value::Red);
 		bool gameOver = false;
 		int moves = 0;
-		PrintBoard(board);
+		//PrintBoard(board);
 		std::vector<std::tuple<torch::Tensor, int, double, torch::Tensor, bool>> gameTrajectory;
 
 		while (!gameOver) 
@@ -121,12 +122,12 @@ int main() {
 					<< ", Winner: " << (winner == DQN_COLOR ? "DQN" : winner == MACHINE_COLOR ? "MiniMax" : "Draw")
 					<< ", Loss: " << dqnAI.getLoss()  // Add the loss here
 					<< std::endl;
-				PrintBoard(board);
+				//PrintBoard(board);
 				break;
 			}
 
 			dqnTurn = !dqnTurn;
-			PrintBoard(board);
+		//	PrintBoard(board);
 			//PrintBoard(board);
 		}
 
