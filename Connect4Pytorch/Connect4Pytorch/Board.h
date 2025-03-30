@@ -319,5 +319,24 @@ public:
 		return true;
 	}
 
+	bool checkIfWinningMove(const torch::Tensor& state, int action, Value opponentColor) {
+		// Insert the opponent's move into the board
+		// Then check if it leads to a win
+		Board tempBoard = *this;
+		tempBoard.Drop(opponentColor, action);
+		return tempBoard.HasFourInARow() == opponentColor;
+	}
+
+	bool opponentWon(const torch::Tensor& state, int action, Value currentPlayerColor) {
+		// Determine the opponent's color
+		Value opponentColor = (currentPlayerColor == Value::Red) ? Value::Yellow : Value::Red;
+
+		// Use the opponent's color to check if the opponent's move is a winning move
+		bool isWinningMove = checkIfWinningMove(state, action, opponentColor);
+		return isWinningMove;
+	}
+
+
+
 };
 
