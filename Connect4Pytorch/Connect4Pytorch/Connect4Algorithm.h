@@ -98,7 +98,7 @@ public:
 		int column;
 		int alpha{ INT32_MIN };
 		int beta{ INT32_MAX };
-		AlphaBeta(board, 2 + m_Level, alpha, beta, true, column);
+		AlphaBeta(board, 1 + m_Level, alpha, beta, true, column);
 		return column;
 	}
 };

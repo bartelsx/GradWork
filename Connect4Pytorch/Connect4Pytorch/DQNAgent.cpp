@@ -554,7 +554,7 @@ public:
 			std::vector<int> actions;
 			std::vector<double> rewards;
 			std::vector<bool> dones;
-
+			float total_loss = 0.0f;
 			for (auto& [state, action, reward, next_state, done] : game_trajectory) {
 				states.push_back(state);
 				actions.push_back(action);
@@ -584,7 +584,7 @@ public:
 
 			// Compute loss and optimize
 			auto loss = torch::mse_loss(q_values, target_q_values);
-			Loss = loss.item<float>();
+			
 			/*   std::cout << "state_tensor shape: " << state_tensor.sizes() << std::endl;
 			   std::cout << "action_tensor shape: " << action_tensor.sizes() << std::endl;
 			   std::cout << "action_tensor values: " << action_tensor << std::endl;
@@ -623,9 +623,9 @@ public:
 			// Recompute Q-values after update
 			auto new_q_values = policy_net->forward(state_tensor).gather(1, action_tensor.unsqueeze(1)).squeeze(1);
 
-			//std::cout << "[After Update] Q-values - Mean: " << new_q_values.mean().item<float>()
-			//    << " | Min: " << new_q_values.min().item<float>()
-			//    << " | Max: " << new_q_values.max().item<float>() << std::endl;
+			total_loss += loss.item<float>();
+			float avg_loss = total_loss / BATCH_SIZE;
+			Loss = avg_loss;  // Save the average loss
 		}
 	}
 	float getLoss()
