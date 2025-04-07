@@ -7,7 +7,7 @@
 #include <conio.h>
 #include "Board.h"+
 #include "Connect4Algorithm.h"
-
+#include <random> // ✅ Needed for random moves
 
 
 #define LEVEL 0 // MiniMax depth
@@ -41,6 +41,20 @@ void PrintBoard(const Board& board) {
 	std::cout << " +---------------------------+\n";
 }
 
+int getRandomMove(const Board& board) {
+	static std::random_device rd;  // 🔥 Seed for true randomness
+	static std::mt19937 gen(rd()); // ✅ Mersenne Twister PRNG
+	std::vector<int> valid_moves;
+
+	for (int col = 0; col < Board::COLUMNS; ++col) {
+		if (board.IsValidMove(col)) valid_moves.push_back(col);
+	}
+
+	if (valid_moves.empty()) return -1;
+
+	std::uniform_int_distribution<> distrib(0, valid_moves.size() - 1);  // ✅ Uniform distribution
+	return valid_moves[distrib(gen)];
+}
 int main() {
 	Board board;
 	Connect4Algorithm minimaxAI(MACHINE_COLOR, LEVEL);
@@ -63,7 +77,7 @@ int main() {
 	if (epsilon_file.is_open()) {
 		epsilon_file >> epsilon;
 		epsilon_file.close();
-		epsilon = 1;
+		epsilon = 0.01;
 	}
 	else {
 		std::cout << "No epsilon file found, starting from epsilon = 1" << std::endl;
@@ -73,7 +87,7 @@ int main() {
 
 
 	//dqnAI.update_target();
-	for (int episode = 0; episode < 100000; ++episode) { // Training loop
+	for (int episode = 0; episode < 1000; ++episode) { // Training loop
 		//  std::cout << episode<<"\n";
 		board.Reset();
 		bool dqnTurn = (DQN_COLOR == Value::Red);
@@ -95,11 +109,14 @@ int main() {
 				move = dqnAI.select_action(state, epsilon);
 				if (!board.IsValidMove(move)) continue;
 				board.Drop(DQN_COLOR, move);
+				//move = getRandomMove(board); // 🔥 Random AI move
+				//if (move == -1) break; // No valid moves left, game should end
+				//board.Drop(DQN_COLOR, move);
 			}
 			else 
 			{
-				move = minimaxAI.GetNextMove(board);
-				if (!board.IsValidMove(move)) continue;
+				move = getRandomMove(board); // 🔥 Random AI move
+				if (move == -1) break; // No valid moves left, game should end
 				board.Drop(MACHINE_COLOR, move);
 			}
 
@@ -108,7 +125,7 @@ int main() {
 			bool done = board.IsGameOver();
 
 			// Push a single move (experience) into the game trajectory
-			gameTrajectory.push_back(std::make_tuple(state, move, reward, nextState, done));
+			//gameTrajectory.push_back(std::make_tuple(state, move, reward, nextState, done));
 			
 
 
@@ -129,29 +146,29 @@ int main() {
 			//PrintBoard(board);
 		}
 
-		buffer.push(gameTrajectory);
-
-		if (buffer.is_ready()) {
-			dqnAI.train(buffer);
-
-		}
-		//epsilon = max(epsilon - 0.0001, MIN_EPSILON);
-
-		epsilon = (epsilon * EPSILON_DECAY > MIN_EPSILON) ? (epsilon * EPSILON_DECAY) : MIN_EPSILON;
-
-		if (episode % 200 == 0) 
-		{
-			torch::save(dqnAI.policy_net, "policyReal.model");
-			dqnAI.update_target();  // Update target network every 500 episodes
-			std::ofstream epsilon_file("epsilon.txt");
-			epsilon_file << epsilon;
-			epsilon_file.close();
-		}
+		//buffer.push(gameTrajectory);
+		//
+		//if (buffer.is_ready()) {
+		//	dqnAI.train(buffer);
+		//
+		//}
+		////epsilon = max(epsilon - 0.0001, MIN_EPSILON);
+		//
+		//epsilon = (epsilon * EPSILON_DECAY > MIN_EPSILON) ? (epsilon * EPSILON_DECAY) : MIN_EPSILON;
+		//
+		//if (episode % 200 == 0) 
+		//{
+		//	torch::save(dqnAI.policy_net, "policyReal.model");
+		//	dqnAI.update_target();  // Update target network every 500 episodes
+		//	std::ofstream epsilon_file("epsilon.txt");
+		//	epsilon_file << epsilon;
+		//	epsilon_file.close();
+		//}
 	}
 
 	logFile.close();
 	std::cout << "Training complete! Saving model..." << std::endl;
-	torch::save(dqnAI.policy_net, "policyReal.model");
+	//torch::save(dqnAI.policy_net, "policyReal.model");
 	return 0;
 }
 
