@@ -77,7 +77,7 @@ int main() {
 	if (epsilon_file.is_open()) {
 		epsilon_file >> epsilon;
 		epsilon_file.close();
-		epsilon = 0.01;
+		
 	}
 	else {
 		std::cout << "No epsilon file found, starting from epsilon = 1" << std::endl;
@@ -87,7 +87,7 @@ int main() {
 
 
 	//dqnAI.update_target();
-	for (int episode = 0; episode < 1000; ++episode) { // Training loop
+	for (int episode = 0; episode < 10000; ++episode) { // Training loop
 		//  std::cout << episode<<"\n";
 		board.Reset();
 		bool dqnTurn = (DQN_COLOR == Value::Red);
@@ -115,8 +115,11 @@ int main() {
 			}
 			else 
 			{
-				move = getRandomMove(board); // 🔥 Random AI move
-				if (move == -1) break; // No valid moves left, game should end
+				//move = getRandomMove(board); // 🔥 Random AI move
+				//if (move == -1) break; // No valid moves left, game should end
+				//board.Drop(MACHINE_COLOR, move);
+				move = minimaxAI.GetNextMove(board);
+				if (!board.IsValidMove(move)) continue;
 				board.Drop(MACHINE_COLOR, move);
 			}
 
@@ -125,7 +128,7 @@ int main() {
 			bool done = board.IsGameOver();
 
 			// Push a single move (experience) into the game trajectory
-			//gameTrajectory.push_back(std::make_tuple(state, move, reward, nextState, done));
+			gameTrajectory.push_back(std::make_tuple(state, move, reward, nextState, done));
 			
 
 
@@ -146,29 +149,29 @@ int main() {
 			//PrintBoard(board);
 		}
 
-		//buffer.push(gameTrajectory);
-		//
-		//if (buffer.is_ready()) {
-		//	dqnAI.train(buffer);
-		//
-		//}
-		////epsilon = max(epsilon - 0.0001, MIN_EPSILON);
-		//
-		//epsilon = (epsilon * EPSILON_DECAY > MIN_EPSILON) ? (epsilon * EPSILON_DECAY) : MIN_EPSILON;
-		//
-		//if (episode % 200 == 0) 
-		//{
-		//	torch::save(dqnAI.policy_net, "policyReal.model");
-		//	dqnAI.update_target();  // Update target network every 500 episodes
-		//	std::ofstream epsilon_file("epsilon.txt");
-		//	epsilon_file << epsilon;
-		//	epsilon_file.close();
-		//}
+		buffer.push(gameTrajectory);
+		
+		if (buffer.is_ready()) {
+			dqnAI.train(buffer);
+		
+		}
+		//epsilon = max(epsilon - 0.0001, MIN_EPSILON);
+		
+		epsilon = (epsilon * EPSILON_DECAY > MIN_EPSILON) ? (epsilon * EPSILON_DECAY) : MIN_EPSILON;
+		
+		if (episode % 200 == 0) 
+		{
+			torch::save(dqnAI.policy_net, "policyReal.model");
+			dqnAI.update_target();  // Update target network every 500 episodes
+			std::ofstream epsilon_file("epsilon.txt");
+			epsilon_file << epsilon;
+			epsilon_file.close();
+		}
 	}
 
 	logFile.close();
 	std::cout << "Training complete! Saving model..." << std::endl;
-	//torch::save(dqnAI.policy_net, "policyReal.model");
+	torch::save(dqnAI.policy_net, "policyReal.model");
 	return 0;
 }
 
