@@ -150,7 +150,7 @@ int main() {
 		}
 
 		buffer.push(gameTrajectory);
-		
+	
 		if (buffer.is_ready()) {
 			dqnAI.train(buffer);
 		
