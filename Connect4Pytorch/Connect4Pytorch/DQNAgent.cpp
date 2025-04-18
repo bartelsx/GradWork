@@ -147,20 +147,19 @@ public:
 				dones.push_back(done ? 1 : 0);
 			}
 
-			Board board = ConvertTensorToBoard(states[0]);
-
-			if (opponent_is_building_win(board, Value::Yellow)) {
-				rewards[0] -= 10.0;
-			}
-
 			auto state_tensor = torch::stack(states);
 			auto next_state_tensor = torch::stack(next_states);
 			auto action_tensor = torch::tensor(actions, torch::kLong);
-			auto reward_tensor = torch::tensor(rewards).div_(10.0);
+			auto reward_tensor = torch::tensor(rewards);
 			auto done_tensor = torch::tensor(dones, torch::kFloat);
 
+			// Compute Q-values for current states using policy network
 			auto q_values = policy_net->forward(state_tensor).gather(1, action_tensor.unsqueeze(1)).squeeze(1);
+
+			// Use target network to estimate next Q-values for better stability
 			auto next_q_values = std::get<0>(target_net->forward(next_state_tensor).max(1)).detach();
+
+			// Apply Q-learning update with target network
 			auto target_q_values = reward_tensor + GAMMA * next_q_values * (1 - done_tensor);
 
 			loss_tensors.push_back(torch::smooth_l1_loss(q_values, target_q_values));
@@ -169,46 +168,14 @@ public:
 		auto total_loss = torch::stack(loss_tensors).mean();
 		optimizer.zero_grad();
 		total_loss.backward();
-		torch::nn::utils::clip_grad_norm_(policy_net->parameters(), 0.05);
+		torch::nn::utils::clip_grad_norm_(policy_net->parameters(), GRADIENT_CLIP_VALUE);
 		optimizer.step();
 		Loss = total_loss.item<float>();
+
+	
 	}
-
-
-
-
 
 	float getLoss() { return Loss; }
-
-	bool opponent_is_building_win(Board board, Value opponent_color) {
-		for (int col = 0; col < Board::COLUMNS; ++col) {
-			if (!board.IsValidMove(col)) continue;
-
-			board.Drop(opponent_color, col);
-			int threats = board.CalculateScore(opponent_color);
-			board.RemoveDisc(col);
-
-			if (threats >= 900) return true;
-		}
-		return false;
-	}
-
-	Board ConvertTensorToBoard(const torch::Tensor& state_tensor) {
-		Board board;
-		torch::Tensor board_tensor = state_tensor.to(torch::kCPU).to(torch::kInt);
-
-		for (int c = 0; c < Board::COLUMNS; ++c) {
-			for (int r = 0; r < Board::MAX_DISCS_PER_COLUMN; ++r) {
-				int red_value = board_tensor[0][r][c].item<int>();
-				int yellow_value = board_tensor[1][r][c].item<int>();
-
-				if (red_value == 1) board.Drop(Value::Red, c);
-				else if (yellow_value == 1) board.Drop(Value::Yellow, c);
-			}
-		}
-		return board;
-	}
-
 
 	void update_target() {
 		torch::save(policy_net, "policyReal.model");

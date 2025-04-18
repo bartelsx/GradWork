@@ -92,7 +92,7 @@ public:
 		auto winner = HasFourInARow();
 		if (winner == playerColor)
 		{
-			return 15.0;
+			return 1.0;
 		}
 		if (winner != Value::None)
 		{

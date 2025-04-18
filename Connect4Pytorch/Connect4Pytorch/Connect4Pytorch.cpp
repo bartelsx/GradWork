@@ -87,7 +87,7 @@ int main() {
 
 
 	//dqnAI.update_target();
-	for (int episode = 0; episode < 10000; ++episode) { // Training loop
+	for (int episode = 0; episode < 1000000; ++episode) { // Training loop
 		//  std::cout << episode<<"\n";
 		board.Reset();
 		bool dqnTurn = (DQN_COLOR == Value::Red);
@@ -159,7 +159,7 @@ int main() {
 		
 		epsilon = (epsilon * EPSILON_DECAY > MIN_EPSILON) ? (epsilon * EPSILON_DECAY) : MIN_EPSILON;
 		
-		if (episode % 200 == 0) 
+		if (episode % 500 == 0) 
 		{
 			torch::save(dqnAI.policy_net, "policyReal.model");
 			dqnAI.update_target();  // Update target network every 500 episodes
