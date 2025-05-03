@@ -190,6 +190,9 @@ void PrintBoard(const Board& board) {
 }
 
 int main() {
+		std::cout << "CUDA available: " << torch::cuda::is_available() << std::endl;
+	std::cout << "CUDA device count: " << torch::cuda::device_count() << std::endl;
+
 	Board board;
 	Connect4Algorithm minimaxAI(MACHINE_COLOR, LEVEL);
 	DQNAgent dqnAI;
@@ -201,7 +204,7 @@ int main() {
 
 	std::ofstream logFile("training_log.txt", std::ios::out);
 	if (!logFile) {
-		//    std::cerr << "Error opening log file!" << std::endl;
+		    std::cerr << "Error opening log file!" << std::endl;
 		return 1;
 	}
 	torch::load(dqnAI.policy_net, "policyReal.model");
@@ -217,6 +220,9 @@ int main() {
 		epsilon = 0.1; // If no saved epsilon, start from exploration
 	}
 
+	dqnAI.policy_net->to(torch::kCUDA);
+
+//	std::cout << dqnAI.policy_net->parameters()[0].device() << std::endl;
 
 
 	//dqnAI.update_target();
