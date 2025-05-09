@@ -400,3 +400,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Connect4Pytorch/build/ZERO_CHECK.vcxproj
+Connect4Pytorch/build/Connect4Pytorch.vcxproj
+Connect4Pytorch/build/CMakeFiles/generate.stamp.depend
+Connect4Pytorch/build/CMakeFiles/CMakeConfigureLog.yaml
+Connect4Pytorch/build/ALL_BUILD.vcxproj
