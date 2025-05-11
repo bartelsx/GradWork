@@ -5,6 +5,8 @@
 #include <fstream>
 #include <windows.h>
 #include <conio.h>
+#include <filesystem>
+
 #include "Board.h"
 #include "Connect4Algorithm.h"
 
@@ -50,6 +52,10 @@ int getRandomNumber() {
 }
 
 int main() {
+	std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
+	std::cout << "CUDA available: " << torch::cuda::is_available() << std::endl;
+	std::cout << "CUDA device count: " << torch::cuda::device_count() << std::endl;
+
 	Board board;
 	Connect4Algorithm minimaxAI(MACHINE_COLOR, LEVEL);
 	DQNAgent dqnAI;

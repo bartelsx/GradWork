@@ -36,8 +36,4 @@ target_link_libraries(Connect4Pytorch "${TORCH_LIBRARIES}")
 if (NOT Torch_FOUND)
     message(FATAL_ERROR "LibTorch not found! Make sure CMAKE_PREFIX_PATH and Torch_DIR are correctly set.")
 endif()
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
