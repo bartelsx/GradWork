@@ -1383,3 +1383,145 @@ events:
         8.9 
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "C:/Libtorch/share/cmake/Caffe2/public/cuda.cmake:99 (try_run)"
+      - "C:/Libtorch/share/cmake/Caffe2/Caffe2Config.cmake:86 (include)"
+      - "C:/Libtorch/share/cmake/Torch/TorchConfig.cmake:68 (find_package)"
+      - "CMakeLists.txt:16 (find_package)"
+    directories:
+      source: "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/wDgq6/CMakeFiles/CMakeTmp"
+      binary: "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/wDgq6/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Libtorch/share/cmake/Caffe2;C:/Libtorch/share/cmake/Caffe2/public/../Modules_CUDA_fix"
+    buildResult:
+      variable: "compile_result"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/wDgq6/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2cb6f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
+        Build started 5/16/2025 10:00:57 AM.
+        
+        Project "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\wDgq6\\CMakeFiles\\CMakeTmp\\cmTC_2cb6f.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_2cb6f.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\wDgq6\\CMakeFiles\\CMakeTmp\\Debug\\".
+          Creating directory "cmTC_2cb6f.dir\\Debug\\cmTC_2cb6f.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_2cb6f.dir\\Debug\\cmTC_2cb6f.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_2cb6f.dir\\Debug\\cmTC_2cb6f.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_2cb6f.dir\\Debug\\\\" /Fd"cmTC_2cb6f.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\detect_cuda_version.cc
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_2cb6f.dir\\Debug\\\\" /Fd"cmTC_2cb6f.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\detect_cuda_version.cc
+          detect_cuda_version.cc
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\wDgq6\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_2cb6f.exe" /INCREMENTAL /ILK:"cmTC_2cb6f.dir\\Debug\\cmTC_2cb6f.ilk" /NOLOGO "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\lib\\x64\\cudart_static.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/wDgq6/CMakeFiles/CMakeTmp/Debug/cmTC_2cb6f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/wDgq6/CMakeFiles/CMakeTmp/Debug/cmTC_2cb6f.lib" /MACHINE:X64  /machine:x64 cmTC_2cb6f.dir\\Debug\\detect_cuda_version.obj
+          cmTC_2cb6f.vcxproj -> C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\wDgq6\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_2cb6f.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_2cb6f.dir\\Debug\\cmTC_2cb6f.tlog\\unsuccessfulbuild".
+          Touching "cmTC_2cb6f.dir\\Debug\\cmTC_2cb6f.tlog\\cmTC_2cb6f.lastbuildstate".
+        Done Building Project "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\wDgq6\\CMakeFiles\\CMakeTmp\\cmTC_2cb6f.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.49
+        
+      exitCode: 0
+    runResult:
+      variable: "run_result"
+      cached: true
+      stdout: |
+        12.6
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "C:/Libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake:120 (try_run)"
+      - "C:/Libtorch/share/cmake/Caffe2/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake:180 (CUDA_DETECT_INSTALLED_GPUS)"
+      - "C:/Libtorch/share/cmake/Caffe2/public/utils.cmake:344 (cuda_select_nvcc_arch_flags)"
+      - "C:/Libtorch/share/cmake/Caffe2/public/cuda.cmake:331 (torch_cuda_get_nvcc_gencode_flag)"
+      - "C:/Libtorch/share/cmake/Caffe2/Caffe2Config.cmake:86 (include)"
+      - "C:/Libtorch/share/cmake/Torch/TorchConfig.cmake:68 (find_package)"
+      - "CMakeLists.txt:16 (find_package)"
+    directories:
+      source: "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/CMakeFiles/CMakeTmp"
+      binary: "C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CUDA_FLAGS: "-D_WINDOWS -Xcompiler=\"/W3 /GR /EHsc\""
+      CMAKE_CUDA_FLAGS_DEBUG: "-Xcompiler=\"-MDd  -Zi -Ob0 -Od /RTC1\""
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Libtorch/share/cmake/Caffe2;C:/Libtorch/share/cmake/Caffe2/public/../Modules_CUDA_fix"
+    buildResult:
+      variable: "compile_result"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_9ce7c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
+        Build started 5/16/2025 10:01:05 AM.
+        
+        Project "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_9ce7c.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\Debug\\".
+          Creating directory "cmTC_9ce7c.dir\\Debug\\cmTC_9ce7c.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_9ce7c.dir\\Debug\\cmTC_9ce7c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_9ce7c.dir\\Debug\\cmTC_9ce7c.tlog\\unsuccessfulbuild".
+        AddCudaCompileDeps:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /D__CUDACC_VER_MAJOR__=12 /D__CUDACC_VER_MINOR__=6 /D_WINDOWS /DCMAKE_INTDIR="Debug" /D_MBCS /DCMAKE_INTDIR="Debug" /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin" /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\include" /I. /FIcuda_runtime.h /c C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\detect_cuda_compute_capabilities.cu 
+        Project "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj" (1) is building "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj" (1:2) on node 1 (CudaBuildCore target(s)).
+        CudaBuildCore:
+          Compiling CUDA source file ..\\..\\detect_cuda_compute_capabilities.cu...
+          cmd.exe /C "C:\\Users\\barte\\AppData\\Local\\Temp\\tmp573b047ef09d4fcd8ad97ffd3b76751e.cmd"
+          "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin\\nvcc.exe"  --use-local-env -ccbin "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64" -x cu    -I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\include"     --keep-dir cmTC_9ce7c\\x64\\Debug  -maxrregcount=0   --machine 64 --compile -cudart static -std=c++17 -Xcompiler="/EHsc -Zi -Ob0" -g  -D_WINDOWS -D"CMAKE_INTDIR=\\"Debug\\"" -D_MBCS -D"CMAKE_INTDIR=\\"Debug\\"" -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd /GR" -Xcompiler "/FdcmTC_9ce7c.dir\\Debug\\vc143.pdb" -o cmTC_9ce7c.dir\\Debug\\detect_cuda_compute_capabilities.obj "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\detect_cuda_compute_capabilities.cu"
+          
+          C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp>"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin\\nvcc.exe"  --use-local-env -ccbin "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64" -x cu    -I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\include"     --keep-dir cmTC_9ce7c\\x64\\Debug  -maxrregcount=0   --machine 64 --compile -cudart static -std=c++17 -Xcompiler="/EHsc -Zi -Ob0" -g  -D_WINDOWS -D"CMAKE_INTDIR=\\"Debug\\"" -D_MBCS -D"CMAKE_INTDIR=\\"Debug\\"" -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd /GR" -Xcompiler "/FdcmTC_9ce7c.dir\\Debug\\vc143.pdb" -o cmTC_9ce7c.dir\\Debug\\detect_cuda_compute_capabilities.obj "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\detect_cuda_compute_capabilities.cu" 
+          detect_cuda_compute_capabilities.cu
+          tmpxft_00007f84_00000000-7_detect_cuda_compute_capabilities.cudafe1.cpp
+        Done Building Project "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj" (CudaBuildCore target(s)).
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_9ce7c.exe" /INCREMENTAL /ILK:"cmTC_9ce7c.dir\\Debug\\cmTC_9ce7c.ilk" /NOLOGO /LIBPATH:"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\lib\\x64" cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/CMakeFiles/CMakeTmp/Debug/cmTC_9ce7c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/CMakeFiles/CMakeTmp/Debug/cmTC_9ce7c.lib" /MACHINE:X64  /machine:x64 cmTC_9ce7c.dir\\Debug\\detect_cuda_compute_capabilities.obj
+             Creating library C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/CMakeFiles/CMakeTmp/Debug/cmTC_9ce7c.lib and object C:/2DAE/3th/GradWork/GradWork_Project/GradWork/Connect4Pytorch/build/CMakeFiles/CMakeTmp/Debug/cmTC_9ce7c.exp
+        LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library [C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj]
+          cmTC_9ce7c.vcxproj -> C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_9ce7c.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_9ce7c.dir\\Debug\\cmTC_9ce7c.tlog\\unsuccessfulbuild".
+          Touching "cmTC_9ce7c.dir\\Debug\\cmTC_9ce7c.tlog\\cmTC_9ce7c.lastbuildstate".
+        Done Building Project "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj" (default targets).
+        
+        Build succeeded.
+        
+        "C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library [C:\\2DAE\\3th\\GradWork\\GradWork_Project\\GradWork\\Connect4Pytorch\\build\\CMakeFiles\\CMakeTmp\\cmTC_9ce7c.vcxproj]
+        
+            1 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:01.76
+        
+      exitCode: 0
+    runResult:
+      variable: "run_result"
+      cached: true
+      stdout: |
+        8.9 
+      exitCode: 0
+...

@@ -106,7 +106,35 @@ public:
         }
     }
 
-    int select_action(torch::Tensor state, double epsilon) {
+    int select_action(torch::Tensor state, double epsilon, const Board& board) {
+        state = state.view({ 1, STATE_SIZE }).to(torch::kCUDA);
+       
+        if ((rand() / double(RAND_MAX)) < epsilon) {
+            int random_move;
+            do {
+                random_move = rand() % ACTION_SIZE;
+            } while (!board.IsValidMove(random_move)); // Check with board instance
+            return random_move;
+        }
+
+        auto q_values = policy_net->forward(state);
+
+        // Sort actions based on Q-values
+        std::vector<int> sorted_indices(ACTION_SIZE);
+        std::iota(sorted_indices.begin(), sorted_indices.end(), 0);
+        std::sort(sorted_indices.begin(), sorted_indices.end(),
+            [&q_values](int a, int b) { return q_values[0][a].item<float>() > q_values[0][b].item<float>(); });
+
+        // Pick the best valid action using board instance
+        for (int action : sorted_indices) {
+            if (board.IsValidMove(action)) return action;
+        }
+        
+        return -1; // No valid moves available
+    }
+
+
+    /*int select_action(torch::Tensor state, double epsilon) {
         state = state.view({ 1, STATE_SIZE }).to(torch::kCUDA);
 
         if ((rand() / double(RAND_MAX)) < epsilon) {
@@ -115,7 +143,7 @@ public:
 
         auto q_values = policy_net->forward(state);
         return q_values.argmax(1).item<int>();
-    }
+    }*/
 
     void train(ReplayBuffer& buffer) {
         if (!buffer.is_ready()) return;
